@@ -19,7 +19,7 @@ LARGO = 10
 ALTO = 10
 
 # Establecemos el margen entre las celdas.
-MARGEN = 1
+MARGEN = 1 
 
 # Creamos un array bidimensional. Un array bidimensional
 # no es más que una lista de listas.
@@ -54,6 +54,15 @@ correr=False
 # Lo usamos para establecer cuán rápido de refresca la pantalla.
 reloj = pygame.time.Clock()
 
+def LlenarRet():
+    for fila in range(55):
+        for columna in range(90):
+            color = BLANCO
+            if grid[fila][columna] == 1:
+                color = AZUL                 
+            pygame.draw.rect(pantalla,color,[(MARGEN+LARGO) * columna + MARGEN,(MARGEN+ALTO) * fila + MARGEN,LARGO,ALTO])
+   
+
 # -------- Bucle Principal del Programa----------
 # -------- ----------- -------- -----------------
 # -------- ----------- -------- -----------------
@@ -78,12 +87,7 @@ while not hecho:
     pantalla.fill(GRIS)
 
     # Dibujamos la retícula
-    for fila in range(55):
-        for columna in range(90):
-            color = BLANCO
-            if grid[fila][columna] == 1:
-                color = AZUL                 
-            pygame.draw.rect(pantalla,color,[(MARGEN+LARGO) * columna + MARGEN,(MARGEN+ALTO) * fila + MARGEN,LARGO,ALTO])
+    LlenarRet()
     
     # Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
     pygame.display.flip()
